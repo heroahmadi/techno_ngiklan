@@ -14,7 +14,7 @@ class CreateSosmedTable extends Migration
     public function up()
     {
         Schema::create('sosmed', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_sosmed');
             $table->string('link_sosmed');
             $table->string('type');
             $table->timestamps();

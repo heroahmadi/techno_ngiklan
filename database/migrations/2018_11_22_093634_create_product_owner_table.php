@@ -14,10 +14,10 @@ class CreateProductOwnerTable extends Migration
     public function up()
     {
         Schema::create('product_owner', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_owner');
             $table->string('nama_owner');
             $table->string('alamat');
-            $table->integer('fk_id_produk')->references('id')->on('produk');
+            $table->integer('fk_id_produk')->references('id_produk')->on('produk');
             $table->timestamps();
         });
     }

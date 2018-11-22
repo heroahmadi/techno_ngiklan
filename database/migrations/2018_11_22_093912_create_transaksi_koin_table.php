@@ -14,8 +14,8 @@ class CreateTransaksiKoinTable extends Migration
     public function up()
     {
         Schema::create('transaksi_koin', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('fk_id_endorser')->references('id')->on('endorser');
+            $table->increments('id_transaksi_koin');
+            $table->integer('fk_id_endorser')->references('id_endorser')->on('endorser');
             $table->integer('nilai_koin_transaksi');
             $table->date('tanggal');
             $table->string('status');

@@ -14,7 +14,7 @@ class CreatePaketEndorseTable extends Migration
     public function up()
     {
         Schema::create('paket_endorse', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id_paket');
             $table->string('nama_paket');
             $table->string('deskripsi')->nullable();
             $table->integer('harga');

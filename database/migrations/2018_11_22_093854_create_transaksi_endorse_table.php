@@ -14,9 +14,9 @@ class CreateTransaksiEndorseTable extends Migration
     public function up()
     {
         Schema::create('transaksi_endorse', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('fk_id_endorser')->references('id')->on('endorser');
-            $table->integer('fk_product_owner')->references('id')->on('product_owner');
+            $table->increments('id_transaksi_endorser');
+            $table->integer('fk_id_endorser')->references('id_endorser')->on('endorser');
+            $table->integer('fk_product_owner')->references('id_owner')->on('product_owner');
             $table->integer('nilai_transaksi');
             $table->string('status');
             $table->timestamps();
