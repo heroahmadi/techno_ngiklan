@@ -14,10 +14,13 @@ class CreateSosmedTable extends Migration
     public function up()
     {
         Schema::create('sosmed', function (Blueprint $table) {
-            $table->increments('id_sosmed');
+            $table->increments('id');
             $table->string('link_sosmed');
             $table->string('type');
+            $table->integer('endorser_id');
             $table->timestamps();
+
+            // $table->foreign('endorser_id')->references('id')->on('endorser');
         });
     }
 

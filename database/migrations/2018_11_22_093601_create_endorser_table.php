@@ -14,18 +14,16 @@ class CreateEndorserTable extends Migration
     public function up()
     {
         Schema::create('endorser', function (Blueprint $table) {
-            $table->increments('id_endorser');
+            $table->increments('id');
+            $table->integer('user_id');
             $table->string('nama_endorser');
             $table->string('tempat_lahir');
             $table->date('tgl_lahir');
             $table->string('gender');
-            $table->integer('fk_id_sosmed')->references('id_sosmed')->on('sosmed');
-            $table->integer('fk_id_kategori')->references('id_kategori')->on('kategori');
-            $table->integer('fk_id_product_owner')->references('id_owner')->on('product_owner');
-            $table->integer('fk_id_review')->references('id_review')->on('review');
-            $table->integer('fk_id_paket_endorse')->references('id_paket')->on('paket_endorse');
             $table->integer('jumlah_koin');
             $table->timestamps();
+
+            // $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -14,11 +14,13 @@ class CreateProductOwnerTable extends Migration
     public function up()
     {
         Schema::create('product_owner', function (Blueprint $table) {
-            $table->increments('id_owner');
+            $table->increments('id');
+            $table->integer('user_id');
             $table->string('nama_owner');
             $table->string('alamat');
-            $table->integer('fk_id_produk')->references('id_produk')->on('produk');
             $table->timestamps();
+
+            // $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

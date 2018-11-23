@@ -14,11 +14,14 @@ class CreatePaketEndorseTable extends Migration
     public function up()
     {
         Schema::create('paket_endorse', function (Blueprint $table) {
-            $table->increments('id_paket');
+            $table->increments('id');
             $table->string('nama_paket');
             $table->string('deskripsi')->nullable();
             $table->integer('harga');
+            $table->integer('endorser_id');
             $table->timestamps();
+            
+            // $table->foreign('endorser_id')->references('id')->on('endorser');
         });
     }
 

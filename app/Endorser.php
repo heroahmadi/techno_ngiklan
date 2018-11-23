@@ -8,7 +8,7 @@ class Endorser extends Model
 {
     //
     protected $table = 'endorser';
-    protected $fillabler = [
+    protected $fillable = [
     'nama_endorser', 'tempat_lahir', 'tgl_lahir', 'gender', 'jumlah_koin'
     ];
 }
