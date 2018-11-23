@@ -15,8 +15,8 @@ class CreateTransaksiEndorseTable extends Migration
     {
         Schema::create('transaksi_endorse', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('endorser_id');
-            $table->integer('product_owner_id');
+            $table->char('endorser_id', 36);
+            $table->char('product_owner_id', 36);
             $table->integer('nilai_transaksi');
             $table->string('status');
             $table->timestamps();

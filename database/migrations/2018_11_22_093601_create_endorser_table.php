@@ -14,7 +14,7 @@ class CreateEndorserTable extends Migration
     public function up()
     {
         Schema::create('endorser', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id');
             $table->integer('user_id');
             $table->string('nama_endorser');
             $table->string('tempat_lahir');

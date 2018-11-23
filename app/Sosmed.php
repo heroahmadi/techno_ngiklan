@@ -11,4 +11,9 @@ class Sosmed extends Model
     protected $fillable = [
     'link_sosmed', 'type'
     ];
+
+    public function endorser()
+    {
+        return $this->belongsTo('App\Endorser');
+    }
 }

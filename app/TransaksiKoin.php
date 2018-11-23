@@ -11,4 +11,9 @@ class TransaksiKoin extends Model
     protected $fillable = [
     'fk_id_endorser', 'nilai_koin_transaksi', 'tanggal', 'status'
     ];
+
+    public function endorser()
+    {
+        return $this->belongsTo('App\Endorser');
+    }
 }

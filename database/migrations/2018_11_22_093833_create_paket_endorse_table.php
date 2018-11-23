@@ -18,7 +18,7 @@ class CreatePaketEndorseTable extends Migration
             $table->string('nama_paket');
             $table->string('deskripsi')->nullable();
             $table->integer('harga');
-            $table->integer('endorser_id');
+            $table->char('endorser_id', 36);
             $table->timestamps();
             
             // $table->foreign('endorser_id')->references('id')->on('endorser');

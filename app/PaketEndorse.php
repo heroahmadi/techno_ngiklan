@@ -11,4 +11,9 @@ class PaketEndorse extends Model
     protected $fillable = [
     'nama_paket', 'deskripsi', 'harga'
     ];
+
+    public function endorser()
+    {
+        return $this->belongsTo('App\Endorser');
+    }
 }

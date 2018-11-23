@@ -17,7 +17,7 @@ class CreateSosmedTable extends Migration
             $table->increments('id');
             $table->string('link_sosmed');
             $table->string('type');
-            $table->integer('endorser_id');
+            $table->char('endorser_id', 36);
             $table->timestamps();
 
             // $table->foreign('endorser_id')->references('id')->on('endorser');

@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Uuid;
 
 class Endorser extends Model
 {
@@ -11,4 +12,38 @@ class Endorser extends Model
     protected $fillable = [
     'nama_endorser', 'tempat_lahir', 'tgl_lahir', 'gender', 'jumlah_koin'
     ];
+    
+    protected $attributes = [
+        'id' => Uuid::generate()
+    ];
+
+    public function transaksi_koin()
+    {
+        return $this->hasMany('App\TransaksiKoin');
+    }
+
+    public function user()
+    {
+        return $this->hasOne('App\Users');
+    }
+
+    public function sosmed()
+    {
+        return $this->hasMany('App\Sosmed');
+    }
+
+    public function kategori_endorser()
+    {
+        return $this->hasMany('App\KategoriEndorser');
+    }
+
+    public function paket_endorse()
+    {
+        return $this->hasMany('App\PaketEndorse');
+    }
+
+    public function transaksi()
+    {
+        return $this->hasMany('App\TransaksiEndorse');
+    }
 }

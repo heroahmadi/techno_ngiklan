@@ -13,9 +13,9 @@ class CreateKategoriEndorsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('kategori_endorsers', function (Blueprint $table) {
+        Schema::create('kategori_endorser', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('endorser_id');
+            $table->char('endorser_id', 36);
             $table->integer('kategori_id');
             $table->timestamps();
 
@@ -31,6 +31,6 @@ class CreateKategoriEndorsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('kategori_endorsers');
+        Schema::dropIfExists('kategori_endorser');
     }
 }
