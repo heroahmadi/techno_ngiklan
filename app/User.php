@@ -27,4 +27,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function endorser()
+    {
+        if($this->type === 'endorser')
+            return $this->hasOne('App\Endorser');
+        else
+            return NULL;
+    }
+
+    public function product_owner()
+    {
+        if($this->type === 'product owner')
+            return $this->hasOne('App\ProductOwner')
+        else
+            return NULL;
+    }
 }
