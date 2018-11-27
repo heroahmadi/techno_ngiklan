@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+// Auth::routes();
+
+// endorser
+Route::get('/endorser',function(){
+  return view('userpage.endorser.home');
+});
