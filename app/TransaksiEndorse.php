@@ -9,7 +9,7 @@ class TransaksiEndorse extends Model
     //
     protected $table = 'transaksi_endorse';
     protected $fillable = [
-    'fk_id_endorser', 'fk_product_owner', 'nilai_transaksi', 'status'
+        'endorser_id', 'product_owner_id', 'nilai_transaksi', 'status'
     ];
 
     public function endorser()

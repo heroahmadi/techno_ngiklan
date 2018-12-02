@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Endorser;
+use App\TransaksiEndorse;
 
 class TransactionController extends Controller
 {
@@ -11,12 +12,31 @@ class TransactionController extends Controller
     {
         $endorser = Endorser::findOrFail($endorser_id);
         $products = auth()->user()->product_owner->produk;
+        $pakets = $endorser->paket_endorse;
 
         $data = [
             'endorser' => $endorser,
-            'products' => $products
+            'products' => $products,
+            'pakets' => $pakets
         ];
 
         return view('userpage.pages.show_endorser', $data);
+    }
+
+    public function addTransaction(Request $request)
+    {
+        $endorser = Endorser::findOrFail($request->input('endorser_id'));
+        $owner = auth()->user();
+
+        $data = [
+            'endorser_id' => $endorser->id,
+            'product_owner_id' => $owner->id,
+            'nilai_transaksi' => $request->input('paket'),
+            'status' => 0,
+        ];
+
+        TransaksiEndorse::create($data);
+
+        return view('userpage.pages.transaction_done');
     }
 }
