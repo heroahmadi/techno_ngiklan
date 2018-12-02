@@ -10,12 +10,9 @@ class Endorser extends Model
     //
     protected $table = 'endorser';
     protected $fillable = [
-    'nama_endorser', 'tempat_lahir', 'tgl_lahir', 'gender', 'jumlah_koin'
+     'id', 'nama_endorser', 'tempat_lahir', 'tgl_lahir', 'gender', 'jumlah_koin', 'user_id'
     ];
-    
-    protected $attributes = [
-        'id' => Uuid::generate()
-    ];
+    public $incrementing = false;
 
     public function transaksi_koin()
     {
