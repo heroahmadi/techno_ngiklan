@@ -61,7 +61,13 @@ class UserSeeder extends Seeder
 			'email' => 'email.maria@gmail.com',
 			'email_verified_at' => Carbon::now(),
         	'password' => bcrypt('Maria123'),
-        	'type' => 'product owner'
+			'type' => 'product owner'
+		],[
+        	'name' => 'Admin',
+			'email' => 'admin@gmail.com',
+			'email_verified_at' => null,
+        	'password' => bcrypt('Maria123'),
+			'type' => 'product owner'
 		]];
 		
 		User::insert($data);

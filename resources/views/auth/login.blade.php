@@ -26,11 +26,12 @@
                 <div class="row w-100">
                     <div class="col-lg-4 mx-auto">
                         <div class="auto-form-wrapper">
-                            <form action="{{ route('loginmein') }}" method="POST">
+                            <form action="{{ route('logmein') }}" method="POST">
+                                @csrf
                                 <div class="form-group">
-                                    <label class="label">Username</label>
+                                    <label class="label">Email</label>
                                     <div class="input-group">
-                                        <input type="text" name="username" class="form-control" placeholder="Username">
+                                        <input type="text" name="email" class="form-control" placeholder="Email">
                                         <div class="input-group-append">
                                             <span class="input-group-text">
                                                 <i class="mdi mdi-check-circle-outline"></i>
