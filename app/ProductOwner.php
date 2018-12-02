@@ -21,7 +21,7 @@ class ProductOwner extends Model
 
     public function produk()
     {
-        return $this->hasOne('App\Produk');
+        return $this->hasMany('App\Produk');
     }
 
     public function transaksi()

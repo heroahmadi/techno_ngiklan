@@ -19,6 +19,7 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('/', 'HomeController@index');
 
   Route::get('/search', 'SearchController@search');
+  Route::get('/transaction/{endorser_id}', 'TransactionController@showEndorser');
 });
 // Auth::routes();
 

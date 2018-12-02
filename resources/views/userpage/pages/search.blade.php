@@ -21,11 +21,11 @@
     <div class="container">
         <div class="row d-flex">
             <div class="menu-content pb-70 col-lg-8">
-                <p>Menampilkan 25 dari {{ $endorsers->count() }}</p>
+                <p>Menampilkan 16 dari {{ $results->total() }}</p>
             </div>
         </div>
         <div class="row">
-            @foreach ($endorsers as $endorser)
+            @foreach ($results as $result)
             <div class="single-popular-carusel col-lg-3 col-md-6">
                 <div class="thumb-wrap relative">
                     <div class="thumb relative">
@@ -33,14 +33,14 @@
                         <img class="img-fluid" src="{{ asset('storage/endorsers/dinda.jpg') }}" alt="">
                     </div>
                     <div class="meta d-flex justify-content-between">
-                        <p><span class="lnr lnr-users"></span> {followers} <span class="lnr lnr-bubble"></span>{{ $endorser->direview->count() }}</p>
+                        <p><span class="lnr lnr-users"></span> {followers} <span class="lnr lnr-bubble"></span>{}</p>
                         <h4>{harga}</h4>
                     </div>
                 </div>
                 <div class="details">
-                    <a href="{{ url('endorser/'.$endorser->id) }}">
+                    <a href="{{ url('transaction/'.$result->id) }}">
                         <h4>
-                            {{ $endorser->nama_endorser }}
+                            {{ $result->nama }}
                         </h4>
                     </a>
                     <p>
@@ -52,7 +52,7 @@
         </div>
 
         <div class="row">
-            {{ $endorsers->links() }}
+            {{ $results->links() }}
         </div>
     </div>
 </section>

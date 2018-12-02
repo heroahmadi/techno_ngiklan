@@ -16,4 +16,10 @@ class Produk extends Model
     {
         return $this->belongsTo('App\ProductOwner');
     }
+
+
+    public function getNamaAttribute()
+    {
+        return $this->nama_produk;
+    }
 }

@@ -11,15 +11,20 @@ class SearchController extends Controller
     public function search(Request $request)
     {
         $search = $request->product;
-
-        // $produk = Produk::where('nama_produk', 'like', "%{$search}%")->paginate(25);
-        $endorsers = Endorser::where('nama_endorser', 'like', "%{$search}%")->paginate(25);
-
+        $user = auth()->user();
+        if($user->type === 'product owner')
+        {
+            $results = Endorser::where('nama_endorser', 'like', "%{$search}%")->paginate(16);
+        }
+        else
+        {
+            $results = Produk::where('nama_produk', 'like', "%{$search}%")->paginate(16);
+        }
+        
         $data = [
-            // 'produk' => $produk
-            'endorsers' => $endorsers
+            'results' => $results
         ];
 
-        return view('userpage.pages.search_endorser', $data);
+        return view('userpage.pages.search', $data);
     }
 }
