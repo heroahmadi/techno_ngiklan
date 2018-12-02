@@ -18,3 +18,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/endorser',function(){
   return view('userpage.endorser.home');
 });
+
+Route::group(['prefix' => 'admin'], function(){
+  Route::get('/', 'AdminController@index');
+});
