@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'email_verified_at', 'type'
     ];
 
     /**
@@ -39,7 +39,7 @@ class User extends Authenticatable
     public function product_owner()
     {
         if($this->type === 'product owner')
-            return $this->hasOne('App\ProductOwner')
+            return $this->hasOne('App\ProductOwner');
         else
             return NULL;
     }

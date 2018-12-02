@@ -13,20 +13,16 @@ class ProductOwnerSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('product_owner')->delete();
-
-        $datas = [[
-        	'user_id' = '300001',
-        	'nama_owner' = 'Ahmad',
-        	'alamat' = 'Semarang'
-        	],[
-        	'user_id' = '300002',
-        	'nama_owner' = 'Maria',
-        	'alamat' = 'Jakarta'
-        	]];
-
-        	foreach($datas as $data) {
-        	ProductOwner::create($data);
-        }
+        $data = [[
+            'id' => Uuid::generate(),
+        	'user_id' => 7,
+        	'nama_owner' => 'Ahmad',
+        	'alamat' => 'Semarang'
+        ],[
+            'id' => Uuid::generate(),
+        	'user_id' => 8,
+        	'nama_owner' => 'Maria',
+        	'alamat' => 'Jakarta'
+        ]];
     }
 }

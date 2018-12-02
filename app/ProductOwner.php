@@ -10,12 +10,9 @@ class ProductOwner extends Model
     //
     protected $table = 'product_owner';
     protected $fillable = [
-    'nama_owner', 'alamat'
+     'id', 'nama_owner', 'alamat', 'user_id'
     ];
-
-    protected $attributes = [
-        'id' => Uuid::generate()
-    ];
+    public $incrementing = false;
 
     public function user()
     {
