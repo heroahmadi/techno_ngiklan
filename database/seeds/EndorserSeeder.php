@@ -58,5 +58,9 @@ class EndorserSeeder extends Seeder
         	'gender' = 'Perempuan',
         	'jumlah_koin' = '100'
         ]];
+
+        foreach($datas as $data) {
+        	Endorser::create($data);
+        }
     }
 }
