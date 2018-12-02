@@ -23,7 +23,7 @@
 <!-- End banner Area -->
 
 <!-- Start feature Area -->
-<section class="feature-area">
+<!-- <section class="feature-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-4">
@@ -70,7 +70,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- End feature Area -->
 
 <!-- Start popular-course Area -->
@@ -79,8 +79,9 @@
         <div class="row d-flex justify-content-center">
             <div class="menu-content pb-70 col-lg-8">
                 <div class="title text-center">
-                    <h1 class="mb-10">Popular Courses we offer</h1>
-                    <p>There is a moment in the life of any aspiring.</p>
+                    <h1 class="mb-10">Temukan <i>Endorser</i> dan <i>Product Owner</i> !</h1>
+                    <p>Jangan biarkan produk barang dan jasa mu tidak laku tanpa ada yang <i>endorse</i>,<br>
+                        cari dan temukanlah <i>endorser</i>-mu di sini!</p>
                 </div>
             </div>
         </div>

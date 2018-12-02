@@ -16,7 +16,7 @@ Route::post('/login', 'LoginController@login')->name('logmein');
 Route::get('/register', 'RegisterController@index')->name('register');
 
 Route::group(['middleware' => 'auth'], function(){
-  Route::get('/', 'HomeController@index');
+  Route::get('/home', 'HomeController@index');
 });
 // Auth::routes();
 
@@ -27,4 +27,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::group(['prefix' => 'admin'], function(){
   Route::get('/', 'AdminController@index');
+});
+
+Route::group(['middleware' => 'auth'], function(){
+  Route::get('/profile', 'ProfilController@index');
 });
