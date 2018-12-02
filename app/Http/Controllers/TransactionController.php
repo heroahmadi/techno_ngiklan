@@ -26,7 +26,7 @@ class TransactionController extends Controller
     public function addTransaction(Request $request)
     {
         $endorser = Endorser::findOrFail($request->input('endorser_id'));
-        $owner = auth()->user();
+        $owner = auth()->user()->product_owner->id;
 
         $data = [
             'endorser_id' => $endorser->id,
