@@ -66,7 +66,7 @@ class UserSeeder extends Seeder
         	'name' => 'Admin',
 			'email' => 'admin@gmail.com',
 			'email_verified_at' => null,
-        	'password' => bcrypt('Maria123'),
+        	'password' => bcrypt('admin'),
 			'type' => 'product owner'
 		]];
 		
