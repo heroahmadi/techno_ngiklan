@@ -19,6 +19,11 @@ class ProductOwner extends Model
         return $this->hasOne('App\User');
     }
 
+    public function produk()
+    {
+        return $this->hasOne('App\Produk');
+    }
+
     public function transaksi()
     {
         return $this->hasMany('App\TransaksiEndorse');
