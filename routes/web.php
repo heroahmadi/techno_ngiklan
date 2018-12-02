@@ -17,6 +17,8 @@ Route::get('/register', 'RegisterController@index')->name('register');
 
 Route::group(['middleware' => 'auth'], function(){
   Route::get('/', 'HomeController@index');
+
+  Route::get('/search', 'SearchController@search');
 });
 // Auth::routes();
 

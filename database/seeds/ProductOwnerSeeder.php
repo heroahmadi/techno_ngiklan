@@ -24,5 +24,7 @@ class ProductOwnerSeeder extends Seeder
         	'nama_owner' => 'Maria',
         	'alamat' => 'Jakarta'
         ]];
+
+        ProductOwner::insert($data);
     }
 }

@@ -43,4 +43,9 @@ class Endorser extends Model
     {
         return $this->hasMany('App\TransaksiEndorse');
     }
+
+    public function direview()
+    {
+        return $this->hasMany('App\Review', 'direview_id');
+    }
 }
