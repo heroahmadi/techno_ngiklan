@@ -67,7 +67,7 @@ class UserSeeder extends Seeder
 			'email' => 'admin@gmail.com',
 			'email_verified_at' => null,
         	'password' => bcrypt('admin'),
-			'type' => 'product owner'
+			'type' => 'admin'
 		]];
 		
 		User::insert($data);
