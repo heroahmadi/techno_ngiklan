@@ -56,5 +56,9 @@ class UserSeeder extends Seeder
         	'password' => bcrypt('Maria123'),
         	'type' => 'product owner'
         ]];
+
+        foreach($datas as $data) {
+        	User::create($data);
+        }
     }
 }

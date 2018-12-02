@@ -24,5 +24,9 @@ class ProductOwnerSeeder extends Seeder
         	'nama_owner' = 'Maria',
         	'alamat' = 'Jakarta'
         	]];
+
+        	foreach($datas as $data) {
+        	ProductOwner::create($data);
+        }
     }
 }
