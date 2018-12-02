@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     {
         DB::table('users')->delete();
 
-        $data  = [[
+        $datas  = [[
         	'name' => 'Karin Novilda',
         	'email' => 'awkarin@gmail.com',
         	'password' => bcrypt('Karin123'),

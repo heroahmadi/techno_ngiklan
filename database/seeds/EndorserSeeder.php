@@ -15,7 +15,7 @@ class EndorserSeeder extends Seeder
     {
         DB::table('endorser')->delete();
 
-        $data = [[
+        $datas = [[
         	'user_id' = '200001',
         	'nama_endorser' = 'Karin Novilda',
         	'tempat_lahir' = 'Jakarta',

@@ -15,7 +15,7 @@ class ProductOwnerSeeder extends Seeder
     {
         DB::table('product_owner')->delete();
 
-        $data = [[
+        $datas = [[
         	'user_id' = '300001',
         	'nama_owner' = 'Ahmad',
         	'alamat' = 'Semarang'
