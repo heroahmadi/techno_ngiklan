@@ -12,12 +12,14 @@
 */
 
 Route::get('/', 'HomeController@index');
+Route::get('/login', 'LoginController@index')->name('login');
+Route::get('/register', 'RegisterController@index')->name('register');
 // Auth::routes();
 
 // endorser
-Route::get('/endorser',function(){
-  return view('userpage.endorser.home');
-});
+// Route::get('/endorser',function(){
+//   return view('userpage.endorser.home');
+// });
 
 Route::group(['prefix' => 'admin'], function(){
   Route::get('/', 'AdminController@index');
