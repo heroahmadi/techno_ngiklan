@@ -32,7 +32,7 @@ class TransactionController extends Controller
             'endorser_id' => $endorser->id,
             'product_owner_id' => $owner->id,
             'nilai_transaksi' => $request->input('paket'),
-            'status' => 0,
+            'status' => 'Menunggu Verifikasi Admin'
         ];
 
         TransaksiEndorse::create($data);
