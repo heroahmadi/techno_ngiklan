@@ -8,7 +8,12 @@ class Produk extends Model
 {
     //
     protected $table = 'produk';
-    protected $table = [
+    protected $fillable = [
     'nama_produk', 'gambar', 'deskripsi', 'status'
     ];
+
+    public function product_owner()
+    {
+        return $this->belongsTo('App\ProductOwner');
+    }
 }
