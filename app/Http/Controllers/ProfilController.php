@@ -18,17 +18,11 @@ class ProfilController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
+    public function index($id)
     {
-    	$datauser = User::where('id', '=', Auth::id())->get();
-    	// $datauser = DB::table('users')->select(DB::raw('name'))
-    	$dataendorser = Endorser::all();
-    	// $dataproductowner = ProductOwner::all();
-    	$datakategori = KategoriEndorser::all();
-    	// $dataproductowner = ProductOwner::first();
+    	$user = User::findOrFail($id);
 
-        return view ('userpage.pages.profile', compact('datauser','dataendorser', 'dataproductowner', 'datakategori'));
-        // return view('userpage.pages.index');
+        return view('userpage.pages.profile', compact('user'));
     }
 
     // public function product_owner(){
@@ -42,10 +36,11 @@ class ProfilController extends Controller
     	$produk = new Produk();
 
     	$produk->nama_produk = $request->input('nama_produk');
-    	$produk->kategori_produk = $request->input('kategori_id');
-    	$produk->gambar_produk = $request->input('gambar');
+    	$produk->product_owner_id = auth()->user()->id;
+    	$produk->kategori_id = $request->input('kategori_id');
+    	$produk->gambar = $request->input('gambar');
     	$produk->deskripsi = $request->input('deskripsi');
-    	$produk->status_produk = $request->input('status');
+    	$produk->status = $request->input('status');
 
     	$produk->save();
 

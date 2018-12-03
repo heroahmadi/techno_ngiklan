@@ -30,5 +30,6 @@ Route::group(['prefix' => 'admin'], function(){
 });
 
 Route::group(['middleware' => 'auth'], function(){
-  Route::get('/profile', 'ProfilController@index');
+  Route::get('/profile/{id}', ['as' => 'userpage.pages.profile', 'uses' => 'ProfilController@index']);
+  Route::post('/profile/{id}/produk', 'ProfilController@store')->name('produk.store');
 });

@@ -11,7 +11,7 @@
         <div class="row d-flex align-items-center justify-content-center">
             <div class="about-content col-lg-12">
                 <h1 class="text-white">
-                {{ Auth::User()->name }}
+                    {{$user->name}}
                 </h1>
                 <p class="text-white link-nav"><a href="index.html">Beranda </a>  <span class="lnr lnr-arrow-right"></span><a href="blog-home.html">Profile </a></p>
             </div>
@@ -39,12 +39,10 @@
                             <li><a href="#">Lifestyle</a></li>
                         </ul>
                         <div class="user-details row">
-                            @foreach($datauser as $du)
-                            <p class="user-name col-lg-12 col-md-12 col-6"><a href="#"></a>{{$du->name}} <span class="lnr lnr-user"></span></p>
-                            <p class="date col-lg-12 col-md-12 col-6"><a href="#"></a>{{$du->email}} <span class="lnr lnr-calendar-full"></span></p>
-                            <p class="view col-lg-12 col-md-12 col-6"><a href="#"></a>{{$du->type}} <span class="lnr lnr-eye"></span></p>
+                            <p class="user-name col-lg-12 col-md-12 col-6"><a href="#"></a>{{$user->name}} <span class="lnr lnr-user"></span></p>
+                            <p class="date col-lg-12 col-md-12 col-6"><a href="#"></a>{{$user->email}} <span class="lnr lnr-calendar-full"></span></p>
+                            <p class="view col-lg-12 col-md-12 col-6"><a href="#"></a>{{$user->type}} <span class="lnr lnr-eye"></span></p>
                             <p class="comments col-lg-12 col-md-12 col-6"><a href="#"></a> <span class="lnr lnr-bubble"></span></p>
-                            @endforeach
                             <ul class="social-links col-lg-12 col-md-12 col-6">
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -72,9 +70,11 @@
 
                         <!-- Modal -->
                         <div class="modal fade" id="addForm" tabindex='-1' role="dialog" style="padding-top: 150px">
+                        
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
-                                    <form action="/profile" method="POST">
+                                    <form action="{{ route('produk.store', $user->id) }}" method="POST">
+                                    {{ csrf_field() }}
                                     <!-- Modal Header -->
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal">
@@ -87,14 +87,13 @@
                                     <!-- Modal Body -->
                                     <div class="modal-body">
                                         <p class="statusMsg"></p>
-                                        <form role="form">
                                             <div class="form-group">
                                                 <label for="masukkanNama">Nama Produk</label>
-                                                <input type="text" class="form-control" id="masukkanNama" placeholder="Masukkan nama Produk"/>
+                                                <input type="text" class="form-control" id="masukkanNama" name="nama_produk" placeholder="Masukkan nama Produk"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="masukkanEmail">Kategori</label>
-                                                <input type="text" class="form-control" id="masukkanKategori" name="kategori_id" placeholder="Masukkan kategori Produk"/>
+                                                <input type="text" class="form-control" id="masukkanKategori" name="kategori_id" placeholder="Masukkan kategori id"/>
                                             </div>
                                             <div class="form-group">
                                                 <label for="masukkanDeskripsi">Deskripsi</label>
@@ -108,13 +107,12 @@
                                                 <label for="exampleFormControlFile1">Gambar Produk</label>
                                                 <input type="file" name="gambar" class="form-control-file" id="masukkanFoto">
                                             </div>
-                                        </form>
                                     </div>
 
                                     <!-- Modal Footer -->
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                                        <button type="button" class="btn btn-primary submitBtn" onclick="addProdukForm()">Tambahkan</button>
+                                        <button type="submit" class="btn btn-primary submitBtn" onclick="addProdukForm()">Tambahkan</button>
                                     </div>
                                 </form>
                                 </div>
@@ -304,7 +302,7 @@
                    
                     <div class="single-sidebar-widget user-info-widget">
                         <img src="{{asset('assets/img/blog/user-info.png')}}" alt="">
-                        <a href="#"><h4>Ahmad</h4></a>
+                        <a href="#"><h4>{{$user->name}}</h4></a>
                         <!-- <p>
                             Senior blog writer
                         </p> -->
@@ -460,58 +458,6 @@
 @endsection
 
 @section('js')
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-
-
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-    function addProdukForm(){
-    // var reg = /^[A-Z0-9._%+-]+@([A-Z0-9-]+\.)+[A-Z]{2,4}$/i;
-    var nama = $('#masukkanNama').val();
-    var kategori = $('#masukkanKategori').val();
-    var deskripsi = $('#masukkanDeskripsi').val();
-    var status = $('#masukkanStatus').val();
-    var foto = $('#masukkanFoto').val();
-    if(nama.trim() == '' ){
-  alert('Masukkan nama Anda.');
-        $('#masukkanNama').focus();
-  return false;
- // }else if(kategori.trim() == '' ){
- //  alert('Masukkan email Anda.');
- //        $('#masukkanEmail').focus();
- //  return false;
- // }else if(email.trim() != '' && !reg.test(email)){
- //  alert('Masukkan email yang valid.');
- //        $('#masukkanEmail').focus();
- //  return false;
- }else if(deskripsi.trim() == '' ){
-  alert('Masukkan Deskripsi Produk Anda.');
-        $('#masukkanDeskripsi').focus();
-  return false;
- }else{
-        $.ajax({
-            type:'POST',
-            url:'kirim_form.php',
-            data:'addProdukForm=1&nama='+nama+'&kategori='+kategori+'&Deskripsi='+deskripsi+'&status'+status+'&foto'+foto,
-            beforeSend: function () {
-                $('.submitBtn').attr("disabled","disabled");
-                $('.modal-body').css('opacity', '.5');
-            },
-            success:function(msg){
-                if(msg == 'ok'){
-                    $('#masukkanNama').val('');
-                    $('#masukkanEmail').val('');
-                    $('#masukkanPesan').val('');
-                    $('.statusMsg').html('<span style="color:green;">Terima kasih telah menghubungi kami.</p>');
-                }else{
-                    $('.statusMsg').html('<span style="color:red;">Ada sedikit masalah, silakan coba lagi.</span>');
-                }
-                $('.submitBtn').removeAttr("disabled");
-                $('.modal-body').css('opacity', '');
-            }
-        });
-    }
-}
-</script>
 @endsection
