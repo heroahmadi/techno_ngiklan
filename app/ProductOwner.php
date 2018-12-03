@@ -16,7 +16,7 @@ class ProductOwner extends Model
 
     public function user()
     {
-        return $this->hasOne('App\User');
+        return $this->hasOne('App\User', 'id', 'product_owner_id');
     }
 
     public function produk()

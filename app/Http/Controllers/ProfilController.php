@@ -31,8 +31,9 @@ class ProfilController extends Controller
             $my_profile = true;
         }
 
+        $review = $user->getObj->direview;
 
-        return view('userpage.pages.profile', compact('user', 'kategori', 'my_profile', 'produk', 'pakets', 'endorser'));
+        return view('userpage.pages.profile', compact('user', 'kategori', 'my_profile', 'produk', 'pakets', 'endorser', 'review'));
     }
 
     // tambah produk baru
