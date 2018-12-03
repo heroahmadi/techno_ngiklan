@@ -12,11 +12,13 @@
 */
 
 Route::get('/login', 'LoginController@index')->name('login');
+Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::post('/login', 'LoginController@login')->name('logmein');
 Route::get('/register', 'RegisterController@index')->name('register');
+Route::post('/register', 'RegisterController@register');
+Route::get('/', 'HomeController@index');
 
 Route::group(['middleware' => 'auth'], function(){
-  Route::get('/', 'HomeController@index');
 
   Route::get('/profile/{id?}', ['as' => 'userpage.pages.profile', 'uses' => 'ProfilController@index']);
   Route::post('/profile/{id}/produk', 'ProfilController@store')->name('produk.store');

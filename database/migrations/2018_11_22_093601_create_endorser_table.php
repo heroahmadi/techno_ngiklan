@@ -20,6 +20,7 @@ class CreateEndorserTable extends Migration
             $table->string('tempat_lahir');
             $table->date('tgl_lahir');
             $table->string('gender');
+            $table->string('foto')->nullable();
             $table->integer('jumlah_koin')->default(0);
             $table->timestamps();
 

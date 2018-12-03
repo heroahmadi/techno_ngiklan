@@ -1,5 +1,23 @@
 @extends('userpage.templates.home')
 
+@section('styles')
+    @parent
+
+    <style>
+        .img-fluid {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: auto !important;
+            max-height: 250px;
+        }
+
+        .bg-grey {
+            background-color: rgba(165, 165, 165, 0.75);;
+        }
+    </style>
+@endsection
+
 @section('content')
 <!-- start banner Area -->
 <section class="banner-area relative about-banner" id="home">
@@ -45,22 +63,19 @@
                 <div class="thumb-wrap relative">
                     <div class="thumb relative">
                         <div class="overlay overlay-bg"></div>
-                        <img class="img-fluid" src="{{ asset('storage/endorsers/dinda.jpg') }}" alt="">
+                        <img class="img-fluid" src="{{ asset($result->foto) }}" alt="">
                     </div>
-                    <div class="meta d-flex justify-content-between">
-                        <p><span class="lnr lnr-users"></span> {followers} <span class="lnr lnr-bubble"></span>{}</p>
-                        <h4>{harga}</h4>
+                    <div class="meta d-flex justify-content-between bg-grey">
+                        <p>Category: Fashion</p>
                     </div>
                 </div>
                 <div class="details">
-                    <a href="{{ url('transaction/'.$result->id) }}">
+                    <a href="{{ url('profile/'.$result->user->id) }}">
                         <h4>
                             {{ $result->nama }}
                         </h4>
                     </a>
-                    <p>
-                        {kuliner, itu, ini, oke}
-                    </p>
+                    <p>Followers: {{ rand(1, 5) }}jt</p>
                 </div>
             </div>
             @endforeach

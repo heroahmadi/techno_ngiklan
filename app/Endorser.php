@@ -21,7 +21,7 @@ class Endorser extends Model
 
     public function user()
     {
-        return $this->hasOne('App\Users');
+        return $this->hasOne('App\User', 'id', 'user_id');
     }
 
     public function sosmed()

@@ -2,7 +2,7 @@
 
 @section('content')
 <!-- bootstrap css -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+{{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> --}}
 <!-- <section class="banner-area relative" id="profile"> -->
     <!-- start banner Area -->
 <section class="banner-area relative" id="profile">    
@@ -51,17 +51,9 @@
                             </ul>                                                                             
                         </div>
                     </div>
-                    <div class="col-lg-9 col-md-9">
-                        <!-- <h3 class="mt-20 mb-20">Astronomy Binoculars A Great Alternative</h3>
-                        <p class="excert">
-                            MCSE boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction.
-                        </p>
-                        <p>
-                            Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed
-                        </p>
-                        <p>
-                            Boot camps have its supporters and its detractors. Some people do not understand why you should have to spend money on boot camp when you can get the MCSE study materials yourself at a fraction of the camp price. However, who has the willpower to actually sit through a self-imposed MCSE training. who has the willpower to actually sit through a self-imposed
-                        </p> -->
+                    <div class="col-lg-3 col-md-3"></div>
+                    <div class="col-lg-6 col-md-6">
+                        @if ($my_profile)
                         <div class="col-md-12" style="margin-bottom: 10px">
                             <div class="button-group-area mt-10">
                                 <button class="genric-btn primary-border" data-toggle="modal" data-target="#addForm">Tambah Produk</button>
@@ -122,10 +114,38 @@
                                 </div>
                             </div>
                         </div>
+                        @elseif($user->type === 'endorser' && auth()->user()->type === 'product owner')
+                        <div>
+                            <div class="form-group">
+                                <h3>Gunakan jasa endorser ini</h3>
+                            </div>
+                            <form action="{{ url('transaction/add') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="endorser_id" value="{{ $user->getObj->id }}">
+                                <div class="form-group">
+                                    <label>Produk yang akan diendorse</label>
+                                    <select name="produk" id="" class="form-control">
+                                        @foreach ($produk as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama_produk }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Jenis Layanan</label>
+                                    <select name="paket" id="" class="form-control">
+                                        @foreach ($pakets as $paket)
+                                        <option value="{{ $paket->harga }}">{{ $paket->nama_paket }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <input type="submit" class="btn btn-primary">
+                            </form>
+                        </div>
+                        @endif
                     </div>
                 </div>
                 <div class="comments-area">
-                    <h4>Ulasan dari Endorser</h4>
+                    <h4>Ulasan</h4>
                     <div class="comment-list">
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
@@ -139,9 +159,6 @@
                                         Never say goodbye till the end comes!
                                     </p>
                                 </div>
-                            </div>
-                            <div class="reply-btn">
-                                   <a href="" class="btn-reply text-uppercase">reply</a> 
                             </div>
                         </div>
                     </div>  
@@ -159,9 +176,6 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="reply-btn">
-                                   <a href="" class="btn-reply text-uppercase">reply</a> 
-                            </div>
                         </div>
                     </div>  
                     <div class="comment-list left-padding">
@@ -177,9 +191,6 @@
                                         Never say goodbye till the end comes!
                                     </p>
                                 </div>
-                            </div>
-                            <div class="reply-btn">
-                                   <a href="" class="btn-reply text-uppercase">reply</a> 
                             </div>
                         </div>
                     </div>  
@@ -197,9 +208,6 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="reply-btn">
-                                   <a href="" class="btn-reply text-uppercase">reply</a> 
-                            </div>
                         </div>
                     </div>  
                     <div class="comment-list">
@@ -216,13 +224,10 @@
                                     </p>
                                 </div>
                             </div>
-                            <div class="reply-btn">
-                                   <a href="" class="btn-reply text-uppercase">reply</a> 
-                            </div>
                         </div>
                     </div>                                                              
                 </div>
-                <div class="comment-form">
+                {{-- <div class="comment-form">
                     <h4>Leave a Comment</h4>
                     <form>
                         <div class="form-group form-inline">
@@ -241,19 +246,12 @@
                         </div>
                         <a href="#" class="primary-btn text-uppercase">Post Comment</a> 
                     </form>
-                </div>
+                </div> --}}
             </div>
             <div class="col-lg-4 sidebar-widgets">
                 <div class="widget-wrap">
-                    <div class="single-sidebar-widget search-widget">
-                        <form class="search-form" action="#">
-                            <input placeholder="Search Posts" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'" >
-                            <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
-                   
                     <div class="single-sidebar-widget user-info-widget">
-                        <img src="{{asset('assets/img/blog/user-info.png')}}" alt="">
+                        <img src="{{asset($user->getObj->foto)}}" style="height: 100px;" alt="">
                         <a href="#"><h4>{{$user->name}}</h4></a>
                         <!-- <p>
                             Senior blog writer

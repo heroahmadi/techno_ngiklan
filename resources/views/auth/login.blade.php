@@ -68,7 +68,7 @@
                                 </div>
                                 <div class="text-block text-center my-3">
                                     <span class="text-small font-weight-semibold">Not a member ?</span>
-                                    <a href="register.html" class="text-black text-small">Create new account</a>
+                                    <a href="/register" class="text-black text-small">Create new account</a>
                                 </div>
                             </form>
                         </div>
@@ -83,7 +83,7 @@
                                 <a href="#">Terms</a>
                             </li>
                         </ul>
-                        <p class="footer-text text-center">copyright © 2018 Bootstrapdash. All rights reserved.</p>
+                        <p class="footer-text text-center">copyright © 2018 Hi!klan. All rights reserved.</p>
                     </div>
                 </div>
             </div>

@@ -19,7 +19,7 @@ class LoginController extends Controller
         if(Auth::attempt($credentials)){
             $user = Auth::user();
             if($user->type === 'endorser' || $user->type === 'product owner')
-                return redirect('/home');
+                return redirect('/');
             else if($user->type === 'admin')
                 return redirect('/admin');
         }
@@ -30,5 +30,12 @@ class LoginController extends Controller
             $data['message'] = 'Wrong Username / Password';
             return back()->with($data);
         }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+
+        return redirect('/');
     }
 }

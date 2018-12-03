@@ -10,4 +10,12 @@ class RegisterController extends Controller
     {
         return view('auth.register');
     }
+
+    public function register(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|unique:users',
+            'password' => 'required|confirmed'
+        ]);
+    }
 }

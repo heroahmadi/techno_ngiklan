@@ -17,13 +17,22 @@ class ProfilController extends Controller
     public function index($id = null)
     {
         if($id)
+        {
             $user = User::findOrFail($id);
+            $endorser = $user->getObj;
+            $produk = auth()->user()->product_owner->produk;
+            $pakets = $endorser->paket_endorse;
+            $my_profile = false;
+        }
         else
+        {
             $user = auth()->user();
+            $kategori = Kategori::all();
+            $my_profile = true;
+        }
 
-        $kategori = Kategori::all();
 
-        return view('userpage.pages.profile', compact('user', 'kategori'));
+        return view('userpage.pages.profile', compact('user', 'kategori', 'my_profile', 'produk', 'pakets', 'endorser'));
     }
 
     // tambah produk baru

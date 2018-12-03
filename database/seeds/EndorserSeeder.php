@@ -19,7 +19,8 @@ class EndorserSeeder extends Seeder
         	'nama_endorser' => 'Karin Novilda',
         	'tempat_lahir' => 'Jakarta',
         	'tgl_lahir' => '1997-11-29',
-        	'gender' => 'Perempuan',
+			'gender' => 'Perempuan',
+			'foto' => 'storage/endorsers/karin.jpg',
         	'jumlah_koin' => '150'
         ],[
 			'id' => Uuid::generate(),
@@ -27,7 +28,8 @@ class EndorserSeeder extends Seeder
         	'nama_endorser' => 'Arief Muhammad',
         	'tempat_lahir' => 'Batam',
         	'tgl_lahir' => '1990-10-26',
-        	'gender' => 'Laki-laki',
+			'gender' => 'Laki-laki',
+			'foto' => 'storage/endorsers/arief.png',
         	'jumlah_koin' => '100'
         ],[
 			'id' => Uuid::generate(),
@@ -35,7 +37,8 @@ class EndorserSeeder extends Seeder
         	'nama_endorser' => 'Tiara Pangestika',
         	'tempat_lahir' => 'Jakarta',
         	'tgl_lahir' => '1992-06-18',
-        	'gender' => 'Perempuan',
+			'gender' => 'Perempuan',
+			'foto' => 'storage/endorsers/tiara.jpg',
         	'jumlah_koin' => '50'
         ],[
 			'id' => Uuid::generate(),
@@ -43,7 +46,8 @@ class EndorserSeeder extends Seeder
         	'nama_endorser' => 'Rachel Vennya',
         	'tempat_lahir' => 'Jakarta',
         	'tgl_lahir' => '1995-09-23',
-        	'gender' => 'Perempuan',
+			'gender' => 'Perempuan',
+			'foto' => 'storage/endorsers/rachel.jpeg',
         	'jumlah_koin' => '100'
         ],[
 			'id' => Uuid::generate(),
@@ -51,7 +55,8 @@ class EndorserSeeder extends Seeder
         	'nama_endorser' => 'Gita Savitri',
         	'tempat_lahir' => 'Jakarta',
         	'tgl_lahir' => '1992-07-27',
-        	'gender' => 'Perempuan',
+			'gender' => 'Perempuan',
+			'foto' => 'storage/endorsers/gitasav.PNG',
         	'jumlah_koin' => '50'
         ],[
 			'id' => Uuid::generate(),
@@ -59,7 +64,8 @@ class EndorserSeeder extends Seeder
         	'nama_endorser' => 'Nagita Slavina',
         	'tempat_lahir' => 'Jakarta',
         	'tgl_lahir' => '1988-11-29',
-        	'gender' => 'Perempuan',
+			'gender' => 'Perempuan',
+			'foto' => 'storage/endorsers/nagita.jpg',
         	'jumlah_koin' => '100'
 		]];
 		
