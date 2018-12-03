@@ -9,6 +9,7 @@ use App\Endorser;
 use App\User;
 use App\ProductOwner;
 use App\KategoriEndorser;
+use App\Kategori;
 use App\Produk;
 
 class ProfilController extends Controller
@@ -20,7 +21,9 @@ class ProfilController extends Controller
         else
             $user = auth()->user();
 
-        return view('userpage.pages.profile', compact('user'));
+        $kategori = Kategori::all();
+
+        return view('userpage.pages.profile', compact('user', 'kategori'));
     }
 
     // tambah produk baru
