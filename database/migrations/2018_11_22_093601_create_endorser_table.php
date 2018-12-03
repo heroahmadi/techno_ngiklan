@@ -20,7 +20,7 @@ class CreateEndorserTable extends Migration
             $table->string('tempat_lahir');
             $table->date('tgl_lahir');
             $table->string('gender');
-            $table->integer('jumlah_koin');
+            $table->integer('jumlah_koin')->default(0);
             $table->timestamps();
 
             // $table->foreign('user_id')->references('id')->on('users');

@@ -35,7 +35,8 @@ class CoinController extends Controller
         $coin = Coin::findOrFail($request->input('id'));
 
         $data = [
-            'endorser_id' => auth()->user()->id,
+            'endorser_id' => auth()->user()->getObj->id,
+            'coin_id' => $coin->id,
             'nilai_koin_transaksi' => $coin->jumlah,
             'status' => 'Belum diverifikasi'
         ];

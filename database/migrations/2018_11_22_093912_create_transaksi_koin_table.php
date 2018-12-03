@@ -16,6 +16,7 @@ class CreateTransaksiKoinTable extends Migration
         Schema::create('transaksi_koin', function (Blueprint $table) {
             $table->increments('id');
             $table->char('endorser_id', 36);
+            $table->integer('coin_id');
             $table->integer('nilai_koin_transaksi');
             $table->string('status');
             $table->timestamps();

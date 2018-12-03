@@ -43,5 +43,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::group(['prefix' => 'admin'], function(){
   Route::get('/', 'AdminController@index');
+  Route::get('/coins', 'AdminController@coins');
+  Route::post('/coins/approve', 'AdminController@approveCoins');
   Route::post('/transaction/approve', 'AdminController@approveTransaction');
 });
