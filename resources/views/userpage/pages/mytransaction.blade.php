@@ -28,14 +28,19 @@
                         @csrf
                         <input type="hidden" name="transaction_id" id="transaction_id">
                         <input type="hidden" name="rating" id="count">
-                        <textarea name="review" class="form-control" id=""></textarea>
-                        <div class="single-review" style="margin: 0;">
-                            <div class="star">
-                                <span class="fa fa-star" id="rating-1" data-value="1"></span>
-                                <span class="fa fa-star" id="rating-2" data-value="2"></span>
-                                <span class="fa fa-star" id="rating-3" data-value="3"></span>
-                                <span class="fa fa-star" id="rating-4" data-value="4"></span>
-                                <span class="fa fa-star" id="rating-5" data-value="5"></span>
+                        <div class="form-group">
+                            <textarea name="review" class="form-control" id="" placeholder="Tulis ulasan anda mengenai endorser ini..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <div class="single-review" style="margin: 0;">
+                                <div class="star">
+                                    <label>Berikan penilaian anda</label>
+                                    <span class="fa fa-star" id="rating-1" data-value="1"></span>
+                                    <span class="fa fa-star" id="rating-2" data-value="2"></span>
+                                    <span class="fa fa-star" id="rating-3" data-value="3"></span>
+                                    <span class="fa fa-star" id="rating-4" data-value="4"></span>
+                                    <span class="fa fa-star" id="rating-5" data-value="5"></span>
+                                </div>
                             </div>
                         </div>
                     </div>

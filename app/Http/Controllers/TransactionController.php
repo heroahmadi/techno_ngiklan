@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Endorser;
 use App\Review;
 use App\TransaksiEndorse;
+use DB;
 
 class TransactionController extends Controller
 {
