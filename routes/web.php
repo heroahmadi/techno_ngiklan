@@ -17,6 +17,22 @@ Route::get('/register', 'RegisterController@index')->name('register');
 
 Route::group(['middleware' => 'auth'], function(){
   Route::get('/', 'HomeController@index');
+
+  Route::get('/profile/{id}', 'ProfilController@index');
+  
+  Route::get('/chat', 'ChatsController@index');
+  Route::get('/chat/fetch', 'ChatsController@fetchMessages');
+  Route::post('/chat/send', 'ChatsController@sendMessage');
+  
+  Route::get('/search', 'SearchController@search');
+  Route::get('/transaction/my', 'TransactionController@myTransactions');
+  Route::post('/transaction/review', 'TransactionController@review');
+  Route::get('/transaction/{endorser_id}', 'TransactionController@showEndorser');
+  Route::post('/transaction/add', 'TransactionController@addTransaction');
+  
+  Route::get('/coins', 'CoinController@index');
+  Route::get('/coins/buy/{id}', 'CoinController@buy');
+  Route::post('/coins/buy', 'CoinController@pay');
 });
 // Auth::routes();
 
@@ -27,4 +43,7 @@ Route::group(['middleware' => 'auth'], function(){
 
 Route::group(['prefix' => 'admin'], function(){
   Route::get('/', 'AdminController@index');
+  Route::get('/coins', 'AdminController@coins');
+  Route::post('/coins/approve', 'AdminController@approveCoins');
+  Route::post('/transaction/approve', 'AdminController@approveTransaction');
 });

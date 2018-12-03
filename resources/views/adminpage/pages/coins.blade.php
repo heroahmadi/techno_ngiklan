@@ -5,15 +5,15 @@
     <div class="col-lg-12 grid-margin">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Transactions</h4>
+                <h4 class="card-title">Coin Transactions</h4>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>#</th>
                                 <th>Endorser</th>
-                                <th>Product Owner</th>
-                                <th>Nilai Transaksi</th>
+                                <th>Nilai Koin</th>
+                                <th>Total Harga</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -26,11 +26,11 @@
                                 <tr>
                                     <td>{{ $i++ }}</td>
                                     <td>{{ $trans->endorser->nama }}</td>
-                                    <td>{{ $trans->product_owner->nama }}</td>
-                                    <td>{{ $trans->nilai_transaksi }}</td>
+                                    <td>{{ $trans->nilai_koin_transaksi }} coins</td>
+                                    <td>Rp {{ number_format($trans->coin->harga, 0, ',', '.') }}</td>
                                     <td>{{ $trans->status }}</td>
                                     <td>
-                                        @if ($trans->status == 'Menunggu Verifikasi Admin')
+                                        @if ($trans->status == 'Belum diverifikasi')
                                         <button type="button" class="btn btn-sm btn-primary" id="approve-button" data-id="{{ $trans->id }}">Approve</button>
                                         <button type="button" class="btn btn-sm btn-danger">Reject</button>
                                         @else
@@ -47,7 +47,7 @@
     </div>
 </div>
 
-<form action="{{ url('admin/transaction/approve') }}" method="POST" id="transaction-form">
+<form action="{{ url('admin/coins/approve') }}" method="POST" id="transaction-form">
     @csrf
 
     <input type="hidden" name="transaction_id" value="" id="transaction-id">

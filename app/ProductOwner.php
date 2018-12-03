@@ -21,7 +21,7 @@ class ProductOwner extends Model
 
     public function produk()
     {
-        return $this->hasOne('App\Produk');
+        return $this->hasMany('App\Produk');
     }
 
     public function transaksi()
@@ -37,5 +37,10 @@ class ProductOwner extends Model
     public function direview()
     {
         return $this->hasMany('App\Review', 'direview_id');
+    }
+
+    public function getNamaAttribute()
+    {
+        return $this->nama_owner;
     }
 }

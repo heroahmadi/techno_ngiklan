@@ -43,4 +43,17 @@ class User extends Authenticatable
         else
             return NULL;
     }
+
+    public function messages()
+    {
+        return $this->hasMany('App\Message');
+    }
+
+    public function getObj()
+    {
+        if($this->type === 'product owner')
+            return $this->hasOne('App\ProductOwner');
+        else
+            return $this->hasOne('App\Endorser');
+    }
 }

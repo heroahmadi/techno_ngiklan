@@ -9,11 +9,16 @@ class TransaksiKoin extends Model
     //
     protected $table = 'transaksi_koin';
     protected $fillable = [
-    'fk_id_endorser', 'nilai_koin_transaksi', 'tanggal', 'status'
+        'endorser_id', 'nilai_koin_transaksi', 'status', 'coin_id'
     ];
 
     public function endorser()
     {
         return $this->belongsTo('App\Endorser');
+    }
+
+    public function coin()
+    {
+        return $this->belongsTo('App\Coin');
     }
 }

@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('admin_assets/css/style.css') }}">
     <!-- endinject -->
     <link rel="shortcut icon" href="{{ asset('admin_assets/images/favicon.png') }}"/>    
+    <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert/sweetalert2.min.css') }}">
     @show
 </head>
 
@@ -57,7 +58,26 @@
     <!-- endinject -->
     <!-- Custom js for this page-->
     <script src="{{ asset('admin_assets/js/dashboard.js') }}"></script>
+    <script src="{{ asset('assets/plugins/sweetalert/sweetalert2.min.js') }}"></script>
     <!-- End custom js for this page-->
+
+    @if(session('status') == 1)
+    <script>
+        swal({
+            title: '{{ session('title') }}',
+            text: '{{ session('message') }}',
+            type: 'success'
+        });
+    </script>
+    @elseif(session('status') == -1)
+    <script>
+        swal({
+            title: '{{ session('title') }}',
+            text: '{{ session('message') }}',
+            type: 'danger'
+        });
+    </script>
+    @endif
     @show
 </body>
 

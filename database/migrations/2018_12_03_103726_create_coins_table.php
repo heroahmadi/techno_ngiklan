@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTransaksiKoinTable extends Migration
+class CreateCoinsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateTransaksiKoinTable extends Migration
      */
     public function up()
     {
-        Schema::create('transaksi_koin', function (Blueprint $table) {
+        Schema::create('coins', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('endorser_id', 36);
-            $table->integer('coin_id');
-            $table->integer('nilai_koin_transaksi');
-            $table->string('status');
+            $table->integer('jumlah');
+            $table->integer('harga');
             $table->timestamps();
-
-            // $table->foreign('endorser_id')->references('id')->on('endorser');
         });
     }
 
@@ -32,6 +28,6 @@ class CreateTransaksiKoinTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaksi_koin');
+        Schema::dropIfExists('coins');
     }
 }
