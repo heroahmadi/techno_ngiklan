@@ -81,7 +81,7 @@
                                             <span aria-hidden="true">&times;</span>
                                             <span class="sr-only"><b>Tambah Produk</b></span>
                                         </button>
-                                        <h4 class="modal-title" id="labelModalKu">Tutup</h4>
+                                        {{-- <h4 class="modal-title" id="labelModalKu">Tutup</h4> --}}
                                     </div>
 
                                     <!-- Modal Body -->

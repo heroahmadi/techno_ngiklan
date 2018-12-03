@@ -18,7 +18,8 @@ Route::get('/register', 'RegisterController@index')->name('register');
 Route::group(['middleware' => 'auth'], function(){
   Route::get('/', 'HomeController@index');
 
-  Route::get('/profile/{id}', 'ProfilController@index');
+  Route::get('/profile/{id?}', ['as' => 'userpage.pages.profile', 'uses' => 'ProfilController@index']);
+  Route::post('/profile/{id}/produk', 'ProfilController@store')->name('produk.store');
   
   Route::get('/chat', 'ChatsController@index');
   Route::get('/chat/fetch', 'ChatsController@fetchMessages');
@@ -46,9 +47,4 @@ Route::group(['prefix' => 'admin'], function(){
   Route::get('/coins', 'AdminController@coins');
   Route::post('/coins/approve', 'AdminController@approveCoins');
   Route::post('/transaction/approve', 'AdminController@approveTransaction');
-});
-
-Route::group(['middleware' => 'auth'], function(){
-  Route::get('/profile/{id}', ['as' => 'userpage.pages.profile', 'uses' => 'ProfilController@index']);
-  Route::post('/profile/{id}/produk', 'ProfilController@store')->name('produk.store');
 });

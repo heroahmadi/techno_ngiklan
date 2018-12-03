@@ -13,26 +13,19 @@ use App\Produk;
 
 class ProfilController extends Controller
 {
-	public function __construct()
+    public function index($id = null)
     {
-        $this->middleware('auth');
-    }
-
-    public function index($id)
-    {
-    	$user = User::findOrFail($id);
+        if($id)
+            $user = User::findOrFail($id);
+        else
+            $user = auth()->user();
 
         return view('userpage.pages.profile', compact('user'));
     }
 
-    // public function product_owner(){
-    // 	$profil = ProductOwner::get();
-
-    // 	return view ('userpage.pages.profile', ['profil' => $profil]);
-    // }
-
     // tambah produk baru
-    public function store(Request $request){
+    public function store(Request $request)
+    {
     	$produk = new Produk();
 
     	$produk->nama_produk = $request->input('nama_produk');
