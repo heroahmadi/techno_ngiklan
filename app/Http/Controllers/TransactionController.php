@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Endorser;
+use App\Review;
 use App\TransaksiEndorse;
 
 class TransactionController extends Controller
@@ -50,5 +51,57 @@ class TransactionController extends Controller
         ];
 
         return view('userpage.pages.mytransaction', $data);
+    }
+
+    public function review(Request $request)
+    {
+        $trans = TransaksiEndorse::findOrFail($request->input('transaction_id'));
+        $user = auth()->user();
+        if($user->type == 'endorser')
+        {
+            $direview = $trans->product_owner;
+            $mereview = $trans->endorser;
+        }
+        else
+        {
+            $direview = $trans->endorser;
+            $mereview = $trans->product_owner;
+        }
+
+        $data = [
+            'mereview_id' => $mereview->id,
+            'direview_id' => $direview->id,
+            'ulasan' => $request->input('review'),
+            'rating' => $request->input('rating')
+        ];
+
+        DB::beginTransaction();
+
+        try {
+            Review::create($data);
+    
+            $trans->status = 'Selesai';
+            $trans->save();
+
+            DB::commit();
+        } catch (Exception $e) {
+            DB::rollback();
+
+            $status = -1;
+            $title = 'Gagal memberikan review';
+            $message = 'Terjadi kesalahan, silahkan coba lagi';
+
+            return back()->with('status', $status)
+                        ->with('title', $title)
+                        ->with('message', $message);
+        }
+
+        $status = 1;
+        $title = 'Berhasil memberikan review';
+        $message = 'Terimakasih telah menggunakan Hi!Ngiklan';
+
+        return back()->with('status', $status)
+                        ->with('title', $title)
+                        ->with('message', $message);
     }
 }

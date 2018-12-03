@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth'], function(){
   
   Route::get('/search', 'SearchController@search');
   Route::get('/transaction/my', 'TransactionController@myTransactions');
+  Route::post('/transaction/review', 'TransactionController@review');
   Route::get('/transaction/{endorser_id}', 'TransactionController@showEndorser');
   Route::post('/transaction/add', 'TransactionController@addTransaction');
 });
