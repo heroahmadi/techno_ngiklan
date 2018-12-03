@@ -47,3 +47,8 @@ Route::group(['prefix' => 'admin'], function(){
   Route::post('/coins/approve', 'AdminController@approveCoins');
   Route::post('/transaction/approve', 'AdminController@approveTransaction');
 });
+
+Route::group(['middleware' => 'auth'], function(){
+  Route::get('/profile/{id}', ['as' => 'userpage.pages.profile', 'uses' => 'ProfilController@index']);
+  Route::post('/profile/{id}/produk', 'ProfilController@store')->name('produk.store');
+});

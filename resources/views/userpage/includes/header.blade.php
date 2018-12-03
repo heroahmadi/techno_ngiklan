@@ -23,18 +23,18 @@
             </div>
             <nav id="nav-menu-container">
                 <ul class="nav-menu">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="courses.html">Courses</a></li>
+                    <li><a href="{{url('/home')}}">Beranda</a></li>
+                    <li><a href="{{url('/profile')}}">Profil</a></li>
+                    <!-- <li><a href="courses.html">Review</a></li>
                     <li><a href="events.html">Events</a></li>
-                    <li><a href="gallery.html">Gallery</a></li>
-                    <li class="menu-has-children"><a href="">Blog</a>
+                    <li><a href="gallery.html">Gallery</a></li> -->
+                    <li class="menu-has-children"><a href="">Review</a>
                         <ul>
-                            <li><a href="blog-home.html">Blog Home</a></li>
-                            <li><a href="blog-single.html">Blog Single</a></li>
+                            <li><a href=" ">Ulasan</a></li>
+                            <li><a href=" ">Rating</a></li>
                         </ul>
                     </li>
-                    <li class="menu-has-children"><a href="">Pages</a>
+                    <!-- <li class="menu-has-children"><a href="">Pages</a>
                         <ul>
                             <li><a href="course-details.html">Course Details</a></li>
                             <li><a href="event-details.html">Event Details</a></li>
@@ -46,8 +46,9 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li>
-                    <li><a href="contact.html">Contact</a></li>
+                    </li> -->
+                    <li><a href=" ">Kategori</a></li>
+                    <li><a href=" ">Sign Out</a></li>
                 </ul>
             </nav><!-- #nav-menu-container -->
         </div>
