@@ -28,7 +28,7 @@ class PaketEndorseSeeder extends Seeder
                 'harga' => 75000,
                 'endorser_id' => $endorser->id
             ],[
-                'nama_paket' => 'Silver',
+                'nama_paket' => 'Bronze',
                 'deskripsi' => '1 Story',
                 'harga' => 50000,
                 'endorser_id' => $endorser->id

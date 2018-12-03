@@ -30,7 +30,7 @@ class TransactionController extends Controller
 
         $data = [
             'endorser_id' => $endorser->id,
-            'product_owner_id' => $owner->id,
+            'product_owner_id' => $owner,
             'nilai_transaksi' => $request->input('paket'),
             'status' => 'Menunggu Verifikasi Admin'
         ];
