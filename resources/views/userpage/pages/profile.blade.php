@@ -178,13 +178,13 @@
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
                                 <div class="thumb">
-                                    <img src="img/blog/c1.jpg" alt="">
+                                    <img src="{{asset('assets/img/blog/c1.jpg')}}" alt="">
                                 </div>
                                 <div class="desc">
-                                    <h5><a href="#">Emilly Blunt</a></h5>
+                                    <h5><a href="#">Karin Novilda</a></h5>
                                     <p class="date">December 4, 2017 at 3:12 pm </p>
                                     <p class="comment">
-                                        Never say goodbye till the end comes!
+                                        <i>Hunter</i> yang sangat ramah dan produknya asli!<br>Gak nyesel mengendorse produknya!
                                     </p>
                                 </div>
                             </div>
@@ -197,13 +197,14 @@
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
                                 <div class="thumb">
-                                    <img src="img/blog/c2.jpg" alt="">
+                                    <img src="{{asset('assets/img/blog/c2.jpg')}}" alt="">
                                 </div>
                                 <div class="desc">
-                                    <h5><a href="#">Elsie Cunningham</a></h5>
+                                    <h5><a href="#">Arief Muhammad</a></h5>
                                     <p class="date">December 4, 2017 at 3:12 pm </p>
                                     <p class="comment">
-                                        Never say goodbye till the end comes!
+                                        Gila! <i>Hunter</i> gokil! Produknya beneran, gak main-main.<br>
+                                        Sukses terus, <i>ter</i>!
                                     </p>
                                 </div>
                             </div>
@@ -216,13 +217,13 @@
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
                                 <div class="thumb">
-                                    <img src="img/blog/c3.jpg" alt="">
+                                    <img src="{{asset('assets/img/blog/c3.jpg')}}" alt="">
                                 </div>
                                 <div class="desc">
-                                    <h5><a href="#">Annie Stephens</a></h5>
+                                    <h5><a href="#">Nagita Slavina</a></h5>
                                     <p class="date">December 4, 2017 at 3:12 pm </p>
                                     <p class="comment">
-                                        Never say goodbye till the end comes!
+                                        <i>Nice Product!</i>
                                     </p>
                                 </div>
                             </div>
@@ -235,13 +236,13 @@
                         <div class="single-comment justify-content-between d-flex">
                             <div class="user justify-content-between d-flex">
                                 <div class="thumb">
-                                    <img src="img/blog/c4.jpg" alt="">
+                                    <img src="https://m.media-amazon.com/images/M/MV5BMTY3Nzg2NjA1OF5BMl5BanBnXkFtZTgwMjY5NTU1MzI@._V1_UY317_CR10,0,214,317_AL_.jpg" alt="" style="width: 70px; height: 100px">
                                 </div>
                                 <div class="desc">
-                                    <h5><a href="#">Maria Luna</a></h5>
+                                    <h5><a href="#">Purina Qurota A</a></h5>
                                     <p class="date">December 4, 2017 at 3:12 pm </p>
                                     <p class="comment">
-                                        Never say goodbye till the end comes!
+                                        Saya suka! Saya suka!
                                     </p>
                                 </div>
                             </div>
