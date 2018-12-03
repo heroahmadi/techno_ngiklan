@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/plugins/sweetalert/sweetalert2.min.css') }}">
     
     @show
 </head>
@@ -58,6 +59,26 @@
     <script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/js/mail-script.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
+    <script src="{{ asset('assets/plugins/sweetalert/sweetalert2.min.js') }}"></script>
+    <!-- End custom js for this page-->
+
+    @if(session('status') == 1)
+    <script>
+        swal({
+            title: '{{ session('title') }}',
+            text: '{{ session('message') }}',
+            type: 'success'
+        });
+    </script>
+    @elseif(session('status') == -1)
+    <script>
+        swal({
+            title: '{{ session('title') }}',
+            text: '{{ session('message') }}',
+            type: 'danger'
+        });
+    </script>
+    @endif
     @show
 </body>
 

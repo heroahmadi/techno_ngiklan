@@ -1,17 +1,52 @@
 @extends('userpage.templates.home')
 
 @section('content')
-    @foreach ($transactions as $trans)
-        <p>{{ $trans->endorser->nama }}</p>
-        <p>{{ $trans->product_owner->nama }}</p>
-        <p>{{ $trans->nilai_transaksi }}</p>
-        <p>{{ $trans->status }}</p>
-        <p>{{ $trans->created_at }}</p>
-        <p>{{ $trans->updated_at }}</p>
-        @if ($trans->status == 'Disetujui')
-        <button type="button" data-toggle="modal" data-target="#review_modal" id="{{ $trans->id }}" class="btn btn-primary review_btn">Review</button>
-        @endif
-    @endforeach
+<!-- start banner Area -->
+<section class="banner-area relative about-banner" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="about-content col-lg-12">
+                <h1 class="text-white">
+                    My Transactions
+                </h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-gap">
+    <div class="container">
+        <div class="row d-flex">
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <th>Endorser</th>
+                        <th>Nilai Transaksi</th>
+                        <th>Status</th>
+                        <th>Tanggal</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach ($transactions as $trans)
+                    <tr>
+                        <td>{{ $trans->endorser->nama }}</td>
+                        <td>{{ $trans->nilai_transaksi }}</td>
+                        <td>{{ $trans->status }}</td>
+                        <td>{{ $trans->created_at->format('d F Y H:i') }}</td>
+                        <td>
+                            @if ($trans->status == 'Disetujui')
+                            <button type="button" data-toggle="modal" data-target="#review_modal" id="{{ $trans->id }}" class="btn btn-primary review_btn">Review</button>
+                            @endif
+                        </td>
+                    </tr>
+                @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- End banner Area -->
 
 
     <div class="modal fade" tabindex="-1" role="dialog" id="review_modal" >
@@ -52,6 +87,7 @@
             </div>
         </div>
     </div>
+</section>
 @endsection
 
 @section('scripts')

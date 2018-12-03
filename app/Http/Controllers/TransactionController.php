@@ -25,6 +25,11 @@ class TransactionController extends Controller
         return view('userpage.pages.show_endorser', $data);
     }
 
+    public function pay()
+    {
+        return view('userpage.pages.transaction_done');
+    }
+
     public function addTransaction(Request $request)
     {
         $endorser = Endorser::findOrFail($request->input('endorser_id'));
@@ -39,7 +44,7 @@ class TransactionController extends Controller
 
         TransaksiEndorse::create($data);
 
-        return view('userpage.pages.transaction_done');
+        return redirect('transaction/my');
     }
 
     public function myTransactions()

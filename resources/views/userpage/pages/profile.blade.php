@@ -59,6 +59,11 @@
                                 <button class="genric-btn primary-border" data-toggle="modal" data-target="#addForm">Tambah Produk</button>
                             </div>
                         </div>
+                        <div class="col-md-12" style="margin-bottom: 10px">
+                            <div class="button-group-area mt-10">
+                                <a href="/transaction/my" class="genric-btn info-border">Transaksi Saya</a>
+                            </div>
+                        </div>
 
                         <!-- Modal -->
                         <div class="modal fade" id="addForm" tabindex='-1' role="dialog" style="padding-top: 150px">
@@ -121,10 +126,9 @@
                             </div>
                             <form action="{{ url('transaction/add') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="endorser_id" value="{{ $user->getObj->id }}">
                                 <div class="form-group">
                                     <label>Produk yang akan diendorse</label>
-                                    <select name="produk" id="" class="form-control">
+                                    <select name="produk" id="produk" class="form-control">
                                         @foreach ($produk as $item)
                                         <option value="{{ $item->id }}">{{ $item->nama_produk }}</option>
                                         @endforeach
@@ -132,15 +136,59 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Jenis Layanan</label>
-                                    <select name="paket" id="" class="form-control">
+                                    <select name="paket" id="paket" class="form-control">
                                         @foreach ($pakets as $paket)
                                         <option value="{{ $paket->harga }}">{{ $paket->nama_paket }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                <input type="submit" class="btn btn-primary">
+                                <button class="btn btn-primary" id="showmodal" type="button" data-toggle="modal" data-target="#submit-modal">Pembayaran</button>
                             </form>
                         </div>
+
+                        <div class="modal fade" id="submit-modal" tabindex='-1' role="dialog" style="padding-top: 150px">
+                        
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content text-center">
+                                        <form action="{{ url('transaction/add') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="endorser_id" value="{{ $user->getObj->id }}">
+                                            <input type="hidden" name="paket" id="paketdimodal" value="{{ $user->getObj->id }}">
+                                            <input type="hidden" name="produk" id="produkdimodal" value="{{ $user->getObj->id }}">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">&times;</span>
+                                                    <span class="sr-only"><b>Tambah Produk</b></span>
+                                                </button>
+                                                {{-- <h4 class="modal-title" id="labelModalKu">Tutup</h4> --}}
+                                            </div>
+        
+                                            <!-- Modal Body -->
+                                            <div class="modal-body">
+                                                <p class="excert">
+                                                    Anda akan Menggunakan Jasa Endorse dari
+                                                </p>
+                                                <h2 class="mb-20"><b>{{ $user->name }}</b></h2>
+                                                <p>Total Harga:</p>
+                                                <h2 class="mb-20 harga" id="hargadimodal">Rp </h2>
+                                                <p>Mohon Transfer ke salah satu rekening berikut:</p>
+                                                <p>Bank Mandiri 031-00-1170324-9 a/n Muhammad Ridha Tantowi</p>
+                                                <p>Bank BRI 0219-1989-9181-1 a/n Muhammad Ridha Tantowi</p>
+                                                <p>Bank BCA 8762-2261-00 a/n Muhammad Ridha Tantowi</p>
+                                                <p class="mb-20">Bank BNI 10-1975-9870  a/n Muhammad Ridha Tantowi</p>
+                                                <p><b>Verifikasi memakan waktu paling lambat 1x24 jam</b></p>
+                                            </div>
+        
+                                            <!-- Modal Footer -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+                                                <button type="submit" class="btn btn-primary">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         @endif
                     </div>
                 </div>
@@ -407,7 +455,16 @@
 <!-- End post-content Area -->
 @endsection
 
-@section('js')
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+@section('scripts')
+    @parent
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> --}}
+
+<script>
+    $("#showmodal").click(function(){
+        $("#hargadimodal").html('Rp '+$("#paket").val());
+        $("#paketdimodal").val($("#paket").val());
+        $("#produkdimodal").val($("#produk").val());
+    });
+</script>
 @endsection

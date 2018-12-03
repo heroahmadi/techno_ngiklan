@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class TransaksiEndorse extends Model
 {
@@ -20,5 +21,10 @@ class TransaksiEndorse extends Model
     public function product_owner()
     {
         return $this->belongsTo('App\ProductOwner');
+    }
+
+    public function getCreatedAtAttribute($val)
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $val, 'Asia/Jakarta');
     }
 }
