@@ -17,11 +17,15 @@ Route::get('/register', 'RegisterController@index')->name('register');
 
 Route::group(['middleware' => 'auth'], function(){
   Route::get('/', 'HomeController@index');
+
+  Route::get('/profile/{id}', 'ProfilController@index');
+  
   Route::get('/chat', 'ChatsController@index');
   Route::get('/chat/fetch', 'ChatsController@fetchMessages');
   Route::post('/chat/send', 'ChatsController@sendMessage');
-
+  
   Route::get('/search', 'SearchController@search');
+  Route::get('/transaction/my', 'TransactionController@myTransactions');
   Route::get('/transaction/{endorser_id}', 'TransactionController@showEndorser');
   Route::post('/transaction/add', 'TransactionController@addTransaction');
 });

@@ -39,4 +39,16 @@ class TransactionController extends Controller
 
         return view('userpage.pages.transaction_done');
     }
+
+    public function myTransactions()
+    {
+        $user = auth()->user()->getObj;
+        $transactions = $user->transaksi;
+
+        $data = [
+            'transactions' => $transactions
+        ];
+
+        return view('userpage.pages.mytransaction', $data);
+    }
 }
