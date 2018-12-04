@@ -13,19 +13,13 @@ class KategoriSeeder extends Seeder
     public function run()
     {
         $data = [[
-            'nama_kategori' => 'Fashion Pria',
-        ],[
-            'nama_kategori' => 'Fashion Wanita',
-        ],[
-            'nama_kategori' => 'Fashion Muslim',
-        ],[
-            'nama_kategori' => 'Fashion Anak',
+            'nama_kategori' => 'Semua Kategori',
         ],[
             'nama_kategori' => 'Kuliner',
         ],[
             'nama_kategori' => 'Peralatan Rumah Tangga',
         ],[
-            'nama_kategori' => 'Kecantikan',
+            'nama_kategori' => 'Fashion',
         ],[
             'nama_kategori' => 'Perawatan Tubuh',
         ],[

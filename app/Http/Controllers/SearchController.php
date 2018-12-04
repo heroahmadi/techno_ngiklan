@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Produk;
 use App\Endorser;
 use App\Kategori;
+use App\KategoriEndorser;
 
 class SearchController extends Controller
 {
@@ -17,12 +18,20 @@ class SearchController extends Controller
 
         if($user->type === 'product owner')
         {
-            $results = Endorser::where('nama_endorser', 'like', "%{$search}%")->paginate(16);
+            $results = Endorser::where('nama_endorser', 'like', "%{$search}%");
         }
         else
         {
-            $results = Produk::where('nama_produk', 'like', "%{$search}%")->paginate(16);
+            $results = Produk::where('nama_produk', 'like', "%{$search}%");
         }
+
+        if($request->category != 'all')
+        {
+            $endorser_categorized = KategoriEndorser::where('kategori_id', $request->category)->pluck('endorser_id');
+            $results = $results->whereIn('id', $endorser_categorized);
+        }
+        
+        $results = $results->paginate(16);
         
         $data = [
             'results' => $results,

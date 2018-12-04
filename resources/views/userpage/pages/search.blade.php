@@ -43,12 +43,12 @@
             </div>
         </div>
         <div class="row mb-50">
-            <form action="">
+            <form action="" id="searchform">
                 <div class="col-lg-6">
                     <input type="text" name="q" placeholder="Search..." onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search...'" class="form-control" value="{{ request('q') }}">
                 </div>
                 <div class="col-lg-6">
-                    <select name="category">
+                    <select name="category" id="category">
                         <option value="all">-- Semua Kategori --</option>
                         @foreach ($kategori as $kat)
                         <option value="{{ $kat->id }}">{{ $kat->nama_kategori }}</option>
@@ -66,7 +66,11 @@
                         <img class="img-fluid" src="{{ asset($result->foto) }}" alt="">
                     </div>
                     <div class="meta d-flex justify-content-between bg-grey">
-                        <p>Category: Fashion</p>
+                        <p>Category: 
+                            @foreach ($result->kategori_endorser as $ka)
+                                {{ $ka->kategori->nama_kategori.' ' }}
+                            @endforeach
+                        </p>
                     </div>
                 </div>
                 <div class="details">
@@ -88,4 +92,19 @@
 </section>
 <!-- End popular-courses Area -->
 
+@endsection
+
+
+@section('scripts')
+    @parent
+
+    <script>
+        $("#category").change(function(){
+            $("#searchform").submit();
+        });
+
+        @if(request('category'))
+        $("#category").val('{{request("category")}}')
+        @endif
+    </script>
 @endsection
