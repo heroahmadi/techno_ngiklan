@@ -48,6 +48,21 @@ class TransactionController extends Controller
         return redirect('transaction/my');
     }
 
+    public function setuju(Request $request)
+    {
+        $trans = TransaksiEndorse::findOrFail($request->input('transaction_id'));
+        $trans->status = 'Menunggu Verifikasi Admin';
+        $trans->save();
+
+        $status = 1;
+        $title = 'Berhasil';
+        $message = 'Silahkan tunggu verifikasi pembayaran dari admin';
+
+        return back()->with('status', $status)
+                    ->with('title', $title)
+                    ->with('message', $message);
+    }
+
     public function tawarkan(Request $request)
     {
         $produk = Produk::findOrFail($request->input('id'));

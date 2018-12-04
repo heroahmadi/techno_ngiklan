@@ -33,6 +33,7 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('/transaction/{endorser_id}', 'TransactionController@showEndorser');
   Route::post('/transaction/offer', 'TransactionController@tawarkan');
   Route::post('/transaction/add', 'TransactionController@addTransaction');
+  Route::post('/transaction/setuju', 'TransactionController@setuju');
   
   Route::get('/coins', 'CoinController@index');
   Route::get('/coins/buy/{id}', 'CoinController@buy');
