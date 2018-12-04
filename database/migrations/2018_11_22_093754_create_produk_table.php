@@ -18,7 +18,7 @@ class CreateProdukTable extends Migration
             $table->char('product_owner_id', 36);
             $table->string('nama_produk');
             $table->string('kategori_id');
-            $table->string('gambar')->nullable();
+            $table->string('foto')->nullable();
             $table->text('deskripsi');
             $table->string('status');
             $table->timestamps();

@@ -31,11 +31,14 @@ Route::group(['middleware' => 'auth'], function(){
   Route::get('/transaction/my', 'TransactionController@myTransactions');
   Route::post('/transaction/review', 'TransactionController@review');
   Route::get('/transaction/{endorser_id}', 'TransactionController@showEndorser');
+  Route::post('/transaction/offer', 'TransactionController@tawarkan');
   Route::post('/transaction/add', 'TransactionController@addTransaction');
   
   Route::get('/coins', 'CoinController@index');
   Route::get('/coins/buy/{id}', 'CoinController@buy');
   Route::post('/coins/buy', 'CoinController@pay');
+
+  Route::get('/product/{id}', 'ProductController@index');
 });
 // Auth::routes();
 

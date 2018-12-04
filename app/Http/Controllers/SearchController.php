@@ -25,7 +25,7 @@ class SearchController extends Controller
             $results = Produk::where('nama_produk', 'like', "%{$search}%");
         }
 
-        if($request->category != 'all')
+        if($request->category && $request->category != 'all')
         {
             $endorser_categorized = KategoriEndorser::where('kategori_id', $request->category)->pluck('endorser_id');
             $results = $results->whereIn('id', $endorser_categorized);
@@ -37,6 +37,8 @@ class SearchController extends Controller
             'results' => $results,
             'kategori' => $kategori
         ];
+
+        // dd($data);
 
         return view('userpage.pages.search', $data);
     }

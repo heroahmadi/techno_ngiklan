@@ -14,27 +14,27 @@ class CoinsSeeder extends Seeder
     {
         $coin = new Coin;
         $coin->jumlah = 1000;
-        $coin->harga = 5000000;
+        $coin->harga = 250000;
         $coin->save();
         
         $coin = new Coin;
         $coin->jumlah = 500;
-        $coin->harga = 2600000;
+        $coin->harga = 130000;
         $coin->save();
 
         $coin = new Coin;
         $coin->jumlah = 250;
-        $coin->harga = 1450000;
+        $coin->harga = 65000;
         $coin->save();
 
         $coin = new Coin;
         $coin->jumlah = 125;
-        $coin->harga = 700000;
+        $coin->harga = 35000;
         $coin->save();
 
         $coin = new Coin;
         $coin->jumlah = 60;
-        $coin->harga = 350000;
+        $coin->harga = 20000;
         $coin->save();
     }
 }

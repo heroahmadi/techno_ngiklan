@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Endorser;
 use App\Review;
+use App\Produk;
 use App\TransaksiEndorse;
 use DB;
 
@@ -45,6 +46,32 @@ class TransactionController extends Controller
         TransaksiEndorse::create($data);
 
         return redirect('transaction/my');
+    }
+
+    public function tawarkan(Request $request)
+    {
+        $produk = Produk::findOrFail($request->input('id'));
+        
+        $data = [
+            'endorser_id' => auth()->user()->getObj->id,
+            'product_owner_id' => $produk->product_owner->id,
+            'nilai_transaksi' => $request->input('paket'),
+            'status' => 'Ditawarkan'
+        ];
+
+        TransaksiEndorse::create($data);
+
+        $user = auth()->user()->getObj;
+        $user->jumlah_koin -= 10;
+        $user->save();
+
+        $status = 1;
+        $title = 'Berhasil';
+        $message = 'Silahkan tunggu persetujuan dari product owner';
+
+        return back()->with('status', $status)
+                    ->with('title', $title)
+                    ->with('message', $message);
     }
 
     public function myTransactions()

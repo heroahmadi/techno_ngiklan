@@ -67,19 +67,29 @@
                     </div>
                     <div class="meta d-flex justify-content-between bg-grey">
                         <p>Category: 
+                            @if (auth()->user()->type === 'product owner')
                             @foreach ($result->kategori_endorser as $ka)
                                 {{ $ka->kategori->nama_kategori.' ' }}
                             @endforeach
+                            @else
+                            {{ $result->kategori->nama_kategori }}
+                            @endif
                         </p>
                     </div>
                 </div>
                 <div class="details">
+                    @if (auth()->user()->type === 'product owner')
                     <a href="{{ url('profile/'.$result->user->id) }}">
+                    @else
+                    <a href="{{ url('product/'.$result->id) }}">
+                    @endif
                         <h4>
                             {{ $result->nama }}
                         </h4>
                     </a>
+                    @if (auth()->user()->type === 'product owner')
                     <p>Followers: {{ rand(1, 5) }}jt</p>
+                    @endif
                 </div>
             </div>
             @endforeach

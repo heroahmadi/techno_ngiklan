@@ -17,6 +17,11 @@ class Produk extends Model
         return $this->belongsTo('App\ProductOwner');
     }
 
+    public function kategori()
+    {
+        return $this->belongsTo('App\Kategori');
+    }
+
 
     public function getNamaAttribute()
     {
