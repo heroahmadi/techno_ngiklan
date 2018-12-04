@@ -19,7 +19,7 @@ class LoginController extends Controller
         if(Auth::attempt($credentials)){
             $user = Auth::user();
             if($user->type === 'endorser' || $user->type === 'product owner')
-                return redirect('/');
+                return redirect('/search');
             else if($user->type === 'admin')
                 return redirect('/admin');
         }

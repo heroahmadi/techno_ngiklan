@@ -20,7 +20,7 @@
 </section>
 <!-- End banner Area -->
 
-<!-- Start popular-course Area -->
+{{-- <!-- Start popular-course Area -->
 <section class="popular-course-area section-gap">
     <div class="container">
         <div class="row d-flex justify-content-center">
@@ -680,5 +680,5 @@
         </div>
     </div>
 </section>
-<!-- End cta-two Area -->
+<!-- End cta-two Area --> --}}
 @endsection
